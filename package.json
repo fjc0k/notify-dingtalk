@@ -1,0 +1,58 @@
+{
+  "name": "notify-dingtalk",
+  "version": "1.0.0",
+  "description": "钉钉群 Markdown 消息通知。",
+  "homepage": "https://github.com/fjc0k/notify-dingtalk#readme",
+  "bugs": {
+    "url": "https://github.com/fjc0k/notify-dingtalk/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fjc0k/notify-dingtalk.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Jay Fong",
+    "email": "fjc0kb@gmail.com",
+    "url": "https://github.com/fjc0k"
+  },
+  "main": "./lib/index.js",
+  "bin": "./lib/cli.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "haoma compile",
+    "release": "npm run build && standard-version -a && git push --follow-tags origin master && npm publish",
+    "test": "haoma run src/cli.ts"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{css,less,scss,sass,html,htm,vue,yml,yaml,json,md}": [
+      "prettier --write"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.12.5",
+    "got": "^11.8.1",
+    "ora": "^5.1.0",
+    "vtils": "^4.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.15.0",
+    "haoma": "^2.23.0",
+    "husky": "^4.3.5",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1",
+    "standard-version": "^9.0.0",
+    "typescript": "^4.1.2"
+  }
+}
