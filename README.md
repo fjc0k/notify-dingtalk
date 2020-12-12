@@ -58,6 +58,35 @@ npx notify-dingtalk
 
 <img src="https://raw.githubusercontent.com/fjc0k/notify-dingtalk/master/preview.png" width="400" />
 
+### 一个更符合实际项目的示例
+
+如果你的更新日志是采用 [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog) 生成的，可使用包提供的 `getLatestConventionalChangelog` 方法获取最新的更新日志。
+
+```javascript
+const {
+  defineConfig,
+  getLatestConventionalChangelog,
+} = require('notify-dingtalk')
+const { dedent } = require('vtils')
+
+module.exports = defineConfig({
+  accessToken: '******',
+  secret: '******',
+  title: '发布公告',
+  content: dedent`
+    # 发布公告
+
+    ---
+
+    ${getLatestConventionalChangelog('./CHANGELOG.md')}
+
+    ---
+
+    [进入主页→](https://github.com/fjc0k/notify-dingtalk)
+  `,
+})
+```
+
 ## 许可
 
 MIT (c) Jay Fong
