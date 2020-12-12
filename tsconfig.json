@@ -13,6 +13,16 @@
     "sourceMap": false,
     "preserveSymlinks": true,
     "newLine": "LF",
-    "lib": ["esnext"]
+    "lib": ["esnext"],
+    "plugins": [
+      {
+        "name": "typescript-snapshots-plugin",
+        "snapshotCallIdentifiers": [
+          "toMatchSnapshot",
+          "toThrowErrorMatchingSnapshot",
+          "toMatchDiffSnapshot"
+        ]
+      }
+    ]
   }
 }

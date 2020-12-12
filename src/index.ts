@@ -1,9 +1,10 @@
-import { send } from './send'
-import type { SendOptions } from './send'
+import { SendOptions } from './send'
 
-function defineConfig(config: SendOptions): SendOptions {
+export function defineConfig(config: SendOptions): SendOptions {
   return config
 }
 
-export { send, defineConfig }
-export type { SendOptions }
+// @index(['./*.ts', '!./cli.ts', '!**/*.test.*'], f => `export * from '${f.path}'`)
+export * from './getLatestConventionalChangelog'
+export * from './send'
+// @endindex
