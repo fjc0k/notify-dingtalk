@@ -22,4 +22,7 @@ test('表现正常', () => {
   expect(
     getLatestConventionalChangelog(resolve('./__fixtures__/CHANGELOG6.md')),
   ).toMatchSnapshot('CHANGELOG6')
+  expect(
+    getLatestConventionalChangelog(resolve('./__fixtures__/CHANGELOG7.md')),
+  ).toMatchSnapshot('CHANGELOG7')
 })

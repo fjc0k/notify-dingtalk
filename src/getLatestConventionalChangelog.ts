@@ -9,8 +9,6 @@ export function getLatestConventionalChangelog(
     'utf8',
   )
   const latestChangelog =
-    (content.match(/\n(#+ [[\d].+?)\n*#+ [[\d]/s)?.[1] ??
-      content.match(/\n(#+ [\d].+?)\n*$/s)?.[1]) ||
-    ''
+    content.match(/(?:^|\n)(#+\s+\[?\d.+?)(?:\n#+\s+\[?\d|$)/s)?.[1] ?? ''
   return latestChangelog.trim()
 }
