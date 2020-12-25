@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/fjc0k/notify-dingtalk/compare/v1.1.1...v1.1.2) (2020-12-25)
+
+### Bug Fixes
+
+- **getLatestConventionalChangelog:** 提取正则优化 ([c394974](https://github.com/fjc0k/notify-dingtalk/commit/c3949746a28b79f07b796282ecb5f1bb8ac7c03d))
+
 ### [1.1.1](https://github.com/fjc0k/notify-dingtalk/compare/v1.1.0...v1.1.1) (2020-12-12)
 
 ## [1.1.0](https://github.com/fjc0k/notify-dingtalk/compare/v1.0.0...v1.1.0) (2020-12-12)

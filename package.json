@@ -1,6 +1,6 @@
 {
   "name": "notify-dingtalk",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "钉钉群 Markdown 消息通知。",
   "homepage": "https://github.com/fjc0k/notify-dingtalk#readme",
   "bugs": {
