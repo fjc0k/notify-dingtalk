@@ -19,7 +19,7 @@ module.exports = [
 
       [查看详情](https://baidu.com)
     `,
-    at: 'all',
+    at: [process.env.D_AT],
   }),
   defineConfig({
     title: '通知2',

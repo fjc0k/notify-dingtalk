@@ -32,6 +32,9 @@ export interface SendOptions {
   at?: 'all' | string[]
 }
 
+/**
+ * @see https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq/9e91d73c
+ */
 export async function send({
   accessToken = process.env.D_ACCESS_TOKEN,
   secret = process.env.D_SECRET,
@@ -52,6 +55,26 @@ export async function send({
     .createHmac('sha256', secret)
     .update(`${timestamp}\n${secret}`)
     .digest('base64')
+  const data = {
+    msgtype: 'markdown',
+    markdown: {
+      title: title,
+      text: content,
+    },
+    at: {
+      atMobiles: Array.isArray(at) ? at : [],
+      isAtAll: at === 'all',
+    },
+  }
+  if (!data.at.isAtAll && data.at.atMobiles.length) {
+    const atMobiles: string[] = data.at.atMobiles.filter(
+      mobile => !data.markdown.text.includes(`@${mobile}`),
+    )
+    if (atMobiles.length) {
+      const atMobilesText = atMobiles.map(mobile => `@${mobile}`).join(' ')
+      data.markdown.text += `<!-- ${atMobilesText} -->`
+    }
+  }
   const { body } = await got.post<{
     errcode: number
     errmsg: string
@@ -62,17 +85,7 @@ export async function send({
       timestamp: timestamp,
       sign: sign,
     },
-    json: {
-      msgtype: 'markdown',
-      markdown: {
-        title: title,
-        text: content,
-      },
-      at: {
-        atMobiles: Array.isArray(at) ? at : [],
-        isAtAll: at === 'all',
-      },
-    },
+    json: data,
   })
 
   if (body.errcode !== 0) {
